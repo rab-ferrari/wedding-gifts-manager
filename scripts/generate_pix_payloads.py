@@ -269,6 +269,7 @@ def main() -> int:
     config_path = Path(__file__).parent.resolve() / "config.json"
     source_path = base_dir / "gifts_source.json"
     output_path = base_dir / "gifts.json"
+    print("\n🚀 [PYTHON] generate_pix_payloads script has started running...")
 
     try:
         config = validate_config(load_json(config_path))
@@ -293,6 +294,7 @@ def main() -> int:
         output_path.write_text(output_text + "\n", encoding="utf-8")
         print(f"Wrote {len(enriched_gifts)} gift(s) with Pix payloads to {output_path}")
 
+    print("✅ [PYTHON] generate_pix_payloads completed successfully!\n")
     return 0
 
 

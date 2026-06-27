@@ -5,8 +5,9 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "preprocess": "python scripts/generate_pix_payloads.py",
+    "dev": "npm run preprocess && vite",
+    "build": "npm run preprocess && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
