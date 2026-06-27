@@ -3,7 +3,8 @@
 generate_pix_payloads.py
 
 Reads:
-  - config.json                      (on same dir as this script, contains fixed Pix BR Code parameters: key, merchant name/city, etc.)
+  - config.json                      (on same dir as this script, contains fixed Pix BR Code parameters:
+                                      "pix_key", "merchant_name", "merchant_city")
   - public/assets/gifts_source.json  (gift list: name, price, image, claimed -- no payload yet)
 
 Writes:
