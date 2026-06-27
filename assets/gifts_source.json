@@ -3,42 +3,42 @@
     "id": 1,
     "name": "Coffee Machine",
     "price": 300.00,
-    "image": "/assets/gifts/coffee_machine.png",
+    "image": "assets/gifts/coffee_machine.png",
     "claimed": true
   },
   {
     "id": 2,
     "name": "Chair",
     "price": 300.00,
-    "image": "/assets/gifts/chair.png",
+    "image": "assets/gifts/chair.png",
     "claimed": false
   },
   {
     "id": 3,
     "name": "Bed",
     "price": 400.00,
-    "image": "/assets/gifts/bed.png",
+    "image": "assets/gifts/bed.png",
     "claimed": false
   },
   {
     "id": 3,
     "name": "Fogao",
     "price": 400.00,
-    "image": "/assets/gifts/bed.png",
+    "image": "assets/gifts/bed.png",
     "claimed": false
   },
   {
     "id": 4,
     "name": "Me da um real",
     "price": 1.00,
-    "image": "/assets/gifts/one_real.png",
+    "image": "assets/gifts/one_real.png",
     "claimed": false
   },
   {
     "id": 5,
     "name": "Me da outro real",
     "price": 1.00,
-    "image": "/assets/gifts/one_real.png",
+    "image": "assets/gifts/one_real.png",
     "claimed": false
   },
 
@@ -46,56 +46,56 @@
     "id": "g1",
     "name": "Cafeteira",
     "price": 250,
-    "image": "/assets/gifts/cafeteira.png",
+    "image": "assets/gifts/cafeteira.png",
     "claimed": false
   },
   {
     "id": "g2",
     "name": "Jogo de Toalhas",
     "price": 99.9,
-    "image": "/assets/gifts/toalhas.png",
+    "image": "assets/gifts/toalhas.png",
     "claimed": false
   },
   {
     "id": "g3",
     "name": "Lua de Mel - Diária",
     "price": 500,
-    "image": "/assets/gifts/luademel.png",
+    "image": "assets/gifts/luademel.png",
     "claimed": false
   },
   {
     "id": "g4",
     "name": "Jogo de Panelas",
     "price": 250,
-    "image": "/assets/gifts/panelas.png",
+    "image": "assets/gifts/panelas.png",
     "claimed": false
   },
   {
     "id": "g5",
     "name": "Liquidificador",
     "price": 250,
-    "image": "/assets/gifts/liquidificador.png",
+    "image": "assets/gifts/liquidificador.png",
     "claimed": false
   },
   {
     "id": "g6",
     "name": "Aspirador de Pó",
     "price": 99.9,
-    "image": "/assets/gifts/aspirador.png",
+    "image": "assets/gifts/aspirador.png",
     "claimed": true
   },
   {
     "id": "g7",
     "name": "Jogo de Facas",
     "price": 250,
-    "image": "/assets/gifts/cafeteira.png",
+    "image": "assets/gifts/cafeteira.png",
     "claimed": false
   },
   {
     "id": "g8",
     "name": "Air Fryer",
     "price": 250,
-    "image": "/assets/gifts/panelas.png",
+    "image": "assets/gifts/panelas.png",
     "claimed": false
   }
 ]
