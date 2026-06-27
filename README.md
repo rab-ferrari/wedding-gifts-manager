@@ -107,6 +107,7 @@ assume away. Three changes address this:
 
 ## Project structure
 
+```
 public/assets/
   gifts_source.json     Editable gift list: id, name, price, image, claimed
                         (no Pix payload yet)
@@ -185,6 +186,7 @@ src/
     giftCard.css                  GiftCard layout (image + info box side by side)
     giftModal.css                  Payment modal layout (responsive width, not fixed)
     tooltip.css                     Shared tooltip bubble styling
+```
 
 ## Gift data
 
