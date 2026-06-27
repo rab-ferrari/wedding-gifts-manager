@@ -24,7 +24,7 @@ export default function HomePage() {
         <div className="home-page__image-panel">
           <img
             className="home-page__image"
-            src="/assets/images/home_background_center.png"
+            src="assets/images/home_background_center.png"
             alt={title}
           />
           <div className="home-page__scrim-top" />

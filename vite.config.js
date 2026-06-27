@@ -1,7 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-export default defineConfig({
-  plugins: [react()],
-  base: '/wedding-gifts-manager/',
-});
+export default defineConfig(({ command }) => {
+  return {
+    plugins: [react()],
+    // If running locally, use root. If building for production, use the repo name.
+    base: command === 'serve' ? '/' : '/wedding-gifts-manager/',
+  }
+})

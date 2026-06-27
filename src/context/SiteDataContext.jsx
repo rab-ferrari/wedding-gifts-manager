@@ -16,11 +16,11 @@ export function SiteDataProvider({ children }) {
 
   useEffect(() => {
     Promise.all([
-      fetch("/assets/texts.json").then((r) => {
+      fetch("assets/texts.json").then((r) => {
         if (!r.ok) throw new Error("Failed to load texts.json");
         return r.json();
       }),
-      fetch("/assets/links.json").then((r) => {
+      fetch("assets/links.json").then((r) => {
         if (!r.ok) throw new Error("Failed to load links.json");
         return r.json();
       }),

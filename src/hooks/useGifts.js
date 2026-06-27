@@ -11,7 +11,7 @@ export function useGifts() {
   useEffect(() => {
     let cancelled = false;
 
-    fetch("/assets/gifts.json")
+    fetch("assets/gifts.json")
       .then((res) => {
         if (!res.ok) throw new Error("Failed to load gifts.json");
         return res.json();

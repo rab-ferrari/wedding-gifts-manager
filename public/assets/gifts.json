@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Coffee Machine",
     "price": 300.0,
-    "image": "/assets/gifts/coffee_machine.png",
+    "image": "assets/gifts/coffee_machine.png",
     "claimed": false,
     "pixPayload": "00020126760014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040214Coffee Machine5204000053039865406300.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***63049038"
   },
@@ -11,7 +11,7 @@
     "id": 2,
     "name": "Chair",
     "price": 300.0,
-    "image": "/assets/gifts/chair.png",
+    "image": "assets/gifts/chair.png",
     "claimed": false,
     "pixPayload": "00020126670014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040205Chair5204000053039865406300.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***63049354"
   },
@@ -19,7 +19,7 @@
     "id": 1,
     "name": "Bed",
     "price": 400.0,
-    "image": "/assets/gifts/bed.png",
+    "image": "assets/gifts/bed.png",
     "claimed": false,
     "pixPayload": "00020126650014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040203Bed5204000053039865406400.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***630420CA"
   },
@@ -27,7 +27,7 @@
     "id": 4,
     "name": "Me da um real",
     "price": 1.0,
-    "image": "/assets/gifts/one_real.png",
+    "image": "assets/gifts/one_real.png",
     "claimed": false,
     "pixPayload": "00020126750014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040213Me da um real52040000530398654041.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***63042388"
   },
@@ -35,7 +35,7 @@
     "id": 5,
     "name": "Me da outro real",
     "price": 1.0,
-    "image": "/assets/gifts/one_real.png",
+    "image": "assets/gifts/one_real.png",
     "claimed": false,
     "pixPayload": "00020126780014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040216Me da outro real52040000530398654041.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***630429A5"
   },
@@ -43,7 +43,7 @@
     "id": "g1",
     "name": "Cafeteira",
     "price": 250.0,
-    "image": "/assets/gifts/cafeteira.png",
+    "image": "assets/gifts/cafeteira.png",
     "claimed": true,
     "pixPayload": "00020126510014br.gov.bcb.pix0116joao@example.com0209Cafeteira5204000053039865406250.005802BR5912JOAO E MARIA6009SAO PAULO62070503***630478FA"
   },
@@ -51,7 +51,7 @@
     "id": "g2",
     "name": "Jogo de Toalhas",
     "price": 99.9,
-    "image": "/assets/gifts/toalhas.png",
+    "image": "assets/gifts/toalhas.png",
     "claimed": false,
     "pixPayload": "00020126570014br.gov.bcb.pix0116joao@example.com0215Jogo de Toalhas520400005303986540599.905802BR5912JOAO E MARIA6009SAO PAULO62070503***63042684"
   },
@@ -59,7 +59,7 @@
     "id": "g3",
     "name": "Lua de Mel - Diária",
     "price": 500.0,
-    "image": "/assets/gifts/luademel.png",
+    "image": "assets/gifts/luademel.png",
     "claimed": false,
     "pixPayload": "00020126610014br.gov.bcb.pix0116joao@example.com0219Lua de Mel - Diaria5204000053039865406500.005802BR5912JOAO E MARIA6009SAO PAULO62070503***63045472"
   },
@@ -67,7 +67,7 @@
     "id": "g4",
     "name": "Jogo de Panelas",
     "price": 250.0,
-    "image": "/assets/gifts/panelas.png",
+    "image": "assets/gifts/panelas.png",
     "claimed": false,
     "pixPayload": "00020126570014br.gov.bcb.pix0116joao@example.com0215Jogo de Panelas5204000053039865406250.005802BR5912JOAO E MARIA6009SAO PAULO62070503***6304B341"
   },
@@ -75,7 +75,7 @@
     "id": "g5",
     "name": "Liquidificador",
     "price": 250.0,
-    "image": "/assets/gifts/liquidificador.png",
+    "image": "assets/gifts/liquidificador.png",
     "claimed": false,
     "pixPayload": "00020126560014br.gov.bcb.pix0116joao@example.com0214Liquidificador5204000053039865406250.005802BR5912JOAO E MARIA6009SAO PAULO62070503***63048879"
   },
@@ -83,7 +83,7 @@
     "id": "g6",
     "name": "Aspirador de Pó",
     "price": 99.9,
-    "image": "/assets/gifts/aspirador.png",
+    "image": "assets/gifts/aspirador.png",
     "claimed": true,
     "pixPayload": "00020126570014br.gov.bcb.pix0116joao@example.com0215Aspirador de Po520400005303986540599.905802BR5912JOAO E MARIA6009SAO PAULO62070503***6304DE90"
   },
@@ -91,7 +91,7 @@
     "id": "g7",
     "name": "Jogo de Facas",
     "price": 250.0,
-    "image": "/assets/gifts/cafeteira.png",
+    "image": "assets/gifts/cafeteira.png",
     "claimed": false,
     "pixPayload": "00020126550014br.gov.bcb.pix0116joao@example.com0213Jogo de Facas5204000053039865406250.005802BR5912JOAO E MARIA6009SAO PAULO62070503***63040EBF"
   },
@@ -99,7 +99,7 @@
     "id": "g8",
     "name": "Air Fryer",
     "price": 250.0,
-    "image": "/assets/gifts/panelas.png",
+    "image": "assets/gifts/panelas.png",
     "claimed": false,
     "pixPayload": "00020126510014br.gov.bcb.pix0116joao@example.com0209Air Fryer5204000053039865406250.005802BR5912JOAO E MARIA6009SAO PAULO62070503***630454B0"
   }

@@ -3,9 +3,9 @@ import { useSiteData } from "../context/SiteDataContext";
 import "../styles/navbar.css";
 
 const LINK_ITEMS = [
-  { key: "maps", icon: "/assets/icons/maps.svg", labelKey: "maps" },
-  { key: "whatsapp", icon: "/assets/icons/whatsapp.svg", labelKey: "whatsapp" },
-  { key: "github", icon: "/assets/icons/github.svg", labelKey: "github" },
+  { key: "maps", icon: "assets/icons/maps.svg", labelKey: "maps" },
+  { key: "whatsapp", icon: "assets/icons/whatsapp.svg", labelKey: "whatsapp" },
+  { key: "github", icon: "assets/icons/github.svg", labelKey: "github" },
 ];
 
 /**

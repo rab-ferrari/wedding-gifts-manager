@@ -4,9 +4,9 @@ import { useText } from "../context/SiteDataContext";
 import "../styles/navbar.css";
 
 const NAV_ITEMS = [
-  { to: "/", icon: "/assets/icons/home.svg", labelKey: "nav_home" },
-  { to: "/gifts", icon: "/assets/icons/gift.svg", labelKey: "nav_gifts" },
-  { to: "/about", icon: "/assets/icons/about.svg", labelKey: "nav_about" },
+  { to: "/", icon: "assets/icons/home.svg", labelKey: "nav_home" },
+  { to: "/gifts", icon: "assets/icons/gift.svg", labelKey: "nav_gifts" },
+  { to: "/about", icon: "assets/icons/about.svg", labelKey: "nav_about" },
 ];
 
 function NavItem({ to, icon, labelKey }) {
