@@ -14,7 +14,14 @@
    defined area, distinct from the card's outer border -- this also
    guarantees the text can never visually overlap the carousel image,
    since the box starts exactly where the carousel ends (plus the
-   card's gap), regardless of viewport width or zoom. */
+   card's gap), regardless of viewport width or zoom.
+
+   Styled to read as a button -- a drop shadow plus a slight upward
+   offset gives it a raised, "tappable" look, which matters
+   especially on mobile where there's no hover state to otherwise
+   hint that it's interactive. transform/box-shadow (not
+   border/padding changes) are used for the lift so nothing else in
+   the layout shifts when the box is pressed. */
 .price-tier-card__info-box {
   flex: 1;
   min-width: 0;
@@ -26,25 +33,43 @@
   border-radius: 4px;
   padding: var(--space-2);
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.03) inset;
+  transform: translateY(-1px);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .price-tier-card__info-box:hover {
   background: var(--color-bg-raised);
+  box-shadow: 0 6px 14px -2px rgba(0, 0, 0, 0.55), 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  transform: translateY(-2px);
+}
+
+/* Pressed/active feedback -- the box "sinks" back down on tap/click,
+   the standard tactile cue for a button, and the one piece of
+   feedback touch devices actually get (they skip :hover entirely). */
+.price-tier-card__info-box:active {
+  box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.5);
+  transform: translateY(0);
 }
 
 /* Dimmed when the currently selected gift is claimed, with no click
    or hover behavior at all (see PriceTierCard.jsx -- onClick/onKeyDown/
    role/tabIndex/tooltip are all omitted entirely for a claimed gift,
    not just visually suppressed), since there's nothing to open a
-   payment modal for. */
+   payment modal for. The elevated/button look is removed too --
+   flat and grounded, so it doesn't visually promise an interaction
+   it can't deliver. */
 .price-tier-card__info-box--claimed {
   opacity: 0.45;
   cursor: default;
+  box-shadow: none;
+  transform: none;
 }
 
 .price-tier-card__info-box--claimed:hover {
   background: var(--color-bg);
+  box-shadow: none;
+  transform: none;
 }
 
 /* Centered within the info box (both axes), with the name and price

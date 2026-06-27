@@ -2,25 +2,117 @@
 
 A simple, self-hosted wedding gift list where guests give money via Pix
 (Brazilian instant payment) directly to the couple — no platform fee, no
-middleman. Built as a static React app (no backend required).
+middleman. Built as a static React app (no backend required). BEWARE: the
+app was vibe-coded (all of the web-related source code, and most of the
+preprocessing), with human inputs being mostly requirements, CI/CD and
+infrastructure.
+
+## Note
+
+This branch "gift-tier-carousel" features a nice PriceTier functionality
+that was removed on the final app version due to UI feedback (the carousel
+appeared to refer the same gift, instead of an actual "price tier" with
+different gift options). Nonetheless, it has been synchronized with all
+other features and requirements since it might prove useful for other use
+cases or design choices.
 
 ## Getting started
 
 This project was hand-scaffolded (not via `npm create vite`) but uses a
-completely standard Vite + React setup. To run it on your machine:
+completely standard Vite + React setup. `npm run dev` and `npm run build`
+both run the Python preprocessing script first (see "Pix payload
+preprocessing" below), so `gifts.json` is always regenerated from
+`gifts_source.json` before the app starts or builds — you don't need to
+run the script separately.
 
 ```bash
 npm install
-npm run dev      # starts the dev server, usually at http://localhost:5173
+npm run dev      # regenerates gifts.json, then starts the dev server
+                 # (usually at http://localhost:5173)
 ```
 
-To build for production (outputs a static `dist/` folder you can deploy
-anywhere — GitHub Pages, Netlify, Cloudflare Pages, etc.):
+To build for production (outputs a static `dist/` folder):
 
 ```bash
 npm run build
 npm run preview  # sanity-check the production build locally
 ```
+
+## Deployment
+
+This app is configured to deploy directly to GitHub Pages, though the
+`dist/` output from `npm run build` is a plain static bundle that works
+on any static host (Netlify, Cloudflare Pages, etc.) — the GitHub
+Pages-specific pieces below (`HashRouter`, the `base` config, relative
+asset paths) are harmless elsewhere too, so no extra setup is needed to
+deploy somewhere else instead.
+
+### One-time setup
+
+1. Install the deploy dependency (already in `package.json`, just needs installing):
+```bash
+   npm install
+```
+2. Set the `"homepage"` field in `package.json` to your actual GitHub Pages
+   URL, e.g. `"https://your-username.github.io/your-repo-name"`.
+3. Set the `base` path in `vite.config.js` (see below) to match your
+   repository name.
+4. Re-create `scripts/config.json` locally with your real Pix details
+   following the template file `scripts/config.template.json`
+   (see "Pix payload preprocessing" below) — it's gitignored and won't
+   come from a fresh clone or fork.
+
+### Deploy
+
+```bash
+npm run deploy
+```
+
+This runs the Python preprocessing script, builds the production bundle
+into `dist/`, and pushes it to the repository's `gh-pages` branch via the
+`gh-pages` package.
+
+### Why these specific changes were needed
+
+GitHub Pages serves project sites from a subpath
+(`username.github.io/repo-name/`), not the domain root, and has no
+server-side rewrite rules — both of which standard Vite/React defaults
+assume away. Three changes address this:
+
+- **`base` in `vite.config.js`** — Vite needs to know what subpath the
+  built assets will be served from so it can generate correct asset
+  URLs. Since the local dev server *does* run at the root, `vite.config.js`
+  picks the right base path depending on context (`serve` = local dev,
+  `build` = production):
+```javascript
+  import { defineConfig } from 'vite'
+  import react from '@vitejs/plugin-react'
+
+  export default defineConfig(({ command }) => ({
+    plugins: [react()],
+    // root locally, repo subfolder in production
+    base: command === 'serve' ? '/' : '/your-repo-name/',
+  }))
+```
+  Replace `your-repo-name` with your actual repository name.
+
+- **`HashRouter` instead of `BrowserRouter`** — `BrowserRouter` relies on
+  the server recognizing every app route (e.g. `/gifts`) and always
+  returning `index.html` so React Router can take over client-side.
+  GitHub Pages has no such rewrite rule, so refreshing or bookmarking
+  any route but the root 404s. `HashRouter` keeps all routing after a
+  `#` (e.g. `/#/gifts`), which the browser never sends to the server at
+  all, so this can't happen. The tradeoff is a `#` in every URL — a
+  non-issue for a site mostly reached via a single shared link.
+
+- **Relative asset paths** — with a `base` path in play, an absolute
+  path like `/assets/icons/home.svg` resolves against the domain root
+  and skips the repo subfolder entirely, breaking on GitHub Pages even
+  though it works locally (where the root and the subpath happen to be
+  the same thing). Every asset reference in the source code and in
+  `gifts.json` uses a relative path instead (`assets/icons/home.svg`,
+  no leading slash), so it resolves correctly relative to wherever the
+  page is actually served from.
 
 ## Project structure
 
@@ -108,7 +200,7 @@ src/
     giftCarousel.css               GiftCarousel styles (square crop, thumbnails, arrows)
 ```
 
-## Gift data and price tiers
+## Gift data and price tiers (differ from main branch)
 
 The Gifts page groups every gift in `gifts.json` by price -- if two gifts
 cost the same, they appear together in one card with a carousel, instead of
@@ -116,6 +208,13 @@ two separate cards. This grouping is called a "price tier" in the code
 (`src/utils/priceTiers.js`); add/edit gifts freely in `gifts_source.json`
 (see the Pix payload section below) and the page picks up shared prices
 automatically, no manual grouping needed.
+
+An earlier version of this page grouped gifts that shared the same price
+into a single card with a carousel to browse between them. Beta testing
+found the carousel unintuitive, so it was replaced with the simpler
+one-card-per-gift structure here. That carousel UI/logic is preserved on
+a separate git branch rather than deleted outright, in case it's useful
+again later.
 
 ## Replacing placeholder assets
 
@@ -128,13 +227,35 @@ at the same paths -- no code changes needed:
 - `public/assets/texts.json` -- edit copy directly
 - `public/assets/links.json` -- replace placeholder URLs with real ones
 
-## Regenerating gifts.json
+## Pix payload preprocessing
 
-After editing `public/assets/gifts_source.json` or `public/assets/config.json`:
+`gifts.json` is generated, not hand-edited -- it's `gifts_source.json`
+plus a valid, CRC-validated Pix payload string computed for each gift
+from your receiver details. This regeneration runs automatically as
+part of `npm run dev`, `npm run build`, and `npm run deploy`, but you can
+also run it manually:
 
 ```bash
 python3 scripts/generate_pix_payloads.py --base-dir public/assets
 ```
 
-This overwrites `public/assets/gifts.json` with fresh, CRC-validated Pix
-payloads ready for the Gifts page to consume.
+### Setting up `scripts/config.json`
+
+This file holds your real Pix key, name, and city, and is gitignored —
+it will not exist after a fresh clone or fork, and should never be
+committed. You can either create it yourself at `scripts/config.json`
+or edit and rename the existing `scripts/config.template.json` that
+already contains the required structure.
+
+```json
+{
+  "pixKey": "your-pix-key-here",
+  "merchantName": "YOUR NAME",
+  "merchantCity": "YOUR CITY"
+}
+```
+
+Without this file, the preprocessing script (and therefore `npm run dev`
+/ `build` / `deploy`) will fail -- this is intentional, since it means
+nobody can accidentally generate or deploy payloads pointing at the
+placeholder data still present in this repo.
