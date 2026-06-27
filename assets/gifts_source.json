@@ -6,19 +6,25 @@
     "claimed": true
   },
   {
-    "name": "Chair",
+    "name": "Cadeira",
     "price": 300.00,
     "image": "assets/gifts/chair.png",
     "claimed": false
   },
   {
-    "name": "Bed",
+    "name": "Taxa do cartório que a Helo prometeu",
+    "price": 605.30,
+    "image": "assets/gifts/cartorio.png",
+    "claimed": false
+  },
+  {
+    "name": "Fogão",
     "price": 400.00,
     "image": "assets/gifts/bed.png",
     "claimed": false
   },
   {
-    "name": "Fogao",
+    "name": "Fogão",
     "price": 400.00,
     "image": "assets/gifts/bed.png",
     "claimed": false
