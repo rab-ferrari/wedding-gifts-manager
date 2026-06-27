@@ -4,3 +4,6 @@ dist/
 .env.local
 *.log
 .DS_Store
+
+# local config file with private info
+scripts/config.json
