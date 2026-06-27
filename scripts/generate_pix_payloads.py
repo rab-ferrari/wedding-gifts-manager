@@ -3,13 +3,14 @@
 generate_pix_payloads.py
 
 Reads:
-  - public/assets/config.json        (fixed Pix BR Code parameters: key, merchant name/city, etc.)
-  - public/assets/gifts_source.json  (gift list: id, name, price, image -- no payload yet)
+  - config.json                      (on same dir as this script, contains fixed Pix BR Code parameters: key, merchant name/city, etc.)
+  - public/assets/gifts_source.json  (gift list: name, price, image, claimed -- no payload yet)
 
 Writes:
   - public/assets/gifts.json         (same gift list, each entry enriched with a valid
                                 static Pix BR Code payload string, ready for the
-                                frontend to feed directly into a QR renderer)
+                                frontend to feed directly into a QR renderer and a unique,
+                                incremental id for indexing purposes, if needed)
 
 This script performs no network calls and depends only on the Python 3
 standard library. Run it manually whenever gifts_source.json or config.json
@@ -222,15 +223,13 @@ def validate_config(config: dict) -> dict:
 
 
 def process_gift(gift: dict, config: dict, index: int) -> dict:
-    gift_id = gift.get("id", f"<index {index}>")
-
     if "price" not in gift:
-        raise PixPayloadError(f"Gift {gift_id!r} is missing required field 'price'")
+        raise PixPayloadError(f"Gift entry #{index} is missing required field 'price'")
 
     try:
         price = float(gift["price"])
     except (TypeError, ValueError) as exc:
-        raise PixPayloadError(f"Gift {gift_id!r} has a non-numeric price: {gift['price']!r}") from exc
+        raise PixPayloadError(f"Gift entry #{index} has a non-numeric price: {gift['price']!r}") from exc
 
     description = gift.get("name")  # shows up in some banking apps' confirmation screen
     txid = gift.get("txid", DEFAULT_TXID)
@@ -244,7 +243,7 @@ def process_gift(gift: dict, config: dict, index: int) -> dict:
         txid=txid,
     )
 
-    enriched = dict(gift)
+    enriched = {"id": index, **dict(gift)}
     enriched["price"] = price
     enriched["pixPayload"] = payload
     return enriched
@@ -256,7 +255,7 @@ def main() -> int:
         "--base-dir",
         type=Path,
         default=Path("public/assets"),
-        help="Base directory containing config.json and gifts_source.json (default: public/assets)",
+        help="Base directory containing gifts_source.json (default: public/assets)",
     )
     parser.add_argument(
         "--dry-run",
@@ -266,7 +265,7 @@ def main() -> int:
     args = parser.parse_args()
 
     base_dir: Path = args.base_dir
-    config_path = base_dir / "config.json"
+    config_path = Path(__file__).parent.resolve() / "config.json"
     source_path = base_dir / "gifts_source.json"
     output_path = base_dir / "gifts.json"
 
