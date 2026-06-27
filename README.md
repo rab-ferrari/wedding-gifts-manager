@@ -58,14 +58,11 @@ src/
                              self-contained (reads links.json itself), shares
                              navbar.css with NavBar, rendered site-wide by Layout
     Icon.jsx                 Inlines SVG markup so icons can be themed with CSS
-    PriceTierCard.jsx        One card per distinct gift price ("price tier" --
-                             see utils/priceTiers.js): carousel on the left,
-                             gift name + price on the right. Owns the
-                             "which gift in this tier is selected" state.
-    GiftCarousel.jsx         Square main image + thumbnail strip with arrows
-                             for browsing gifts within one price tier.
-                             Controlled component (selection state lives in
-                             PriceTierCard, passed down as props)
+    GiftCard.jsx              One card per gift: square image on the left,
+                             gift name + price in a bordered box on the
+                             right. Owns "is the payment modal open" for
+                             this gift; dims and disables click/hover
+                             entirely when the gift is claimed.
     GiftModal.jsx             Pix payment popup: lazily-generated QR code
                              (only once opened, see hooks/useQrCode.js),
                              click-to-copy the Pix payload, gift name + price
@@ -79,8 +76,6 @@ src/
                               once GiftModal actually opens for it -- not
                               eagerly for every gift on page load
   utils/
-    priceTiers.js             Pure function grouping a flat gift list into
-                              price tiers (all gifts sharing one price)
     clipboard.js               Thin wrapper around the async Clipboard API
   pages/
     HomePage.jsx             Hero photo (fills the space between the two bars,
@@ -88,11 +83,11 @@ src/
                              overlaid
     AboutPage.jsx             Two centered boxes (about / privacy), fixed
                              height like Home -- no scroll
-    GiftsPage.jsx             Loads gifts.json, groups into price tiers,
-                             renders a vertically stacked PriceTierCard list.
-                             Scrolls once the list is taller than the
-                             available space (unlike Home/About, which are
-                             fixed single screens)
+    GiftsPage.jsx             Loads gifts.json, renders one GiftCard per
+                             gift, vertically stacked. Scrolls once the
+                             list is taller than the available space
+                             (unlike Home/About, which are fixed single
+                             screens)
   styles/
     theme.css                 Design tokens (colors, fonts, spacing) + base resets;
                               #root is a fixed-height (100vh), non-scrolling flex
@@ -102,20 +97,28 @@ src/
     home.css                   Home page styles
     about.css                   About page styles (two-box layout)
     giftsPage.css                Gifts page layout (scrollable list, title)
-    priceTierCard.css             PriceTierCard layout (carousel + info side by side)
+    giftCard.css                  GiftCard layout (image + info box side by side)
     giftModal.css                  Payment modal layout (responsive width, not fixed)
     tooltip.css                     Shared tooltip bubble styling
-    giftCarousel.css               GiftCarousel styles (square crop, thumbnails, arrows)
 ```
 
-## Gift data and price tiers
+## Gift data
 
-The Gifts page groups every gift in `gifts.json` by price -- if two gifts
-cost the same, they appear together in one card with a carousel, instead of
-two separate cards. This grouping is called a "price tier" in the code
-(`src/utils/priceTiers.js`); add/edit gifts freely in `gifts_source.json`
-(see the Pix payload section below) and the page picks up shared prices
-automatically, no manual grouping needed.
+Each gift in `gifts.json` gets its own card on the Gifts page -- no
+grouping by price or anywhere else. Add/edit gifts freely in
+`gifts_source.json` (see the Pix payload section below); each entry maps
+directly to one `GiftCard`.
+
+Cards are displayed sorted by `id`, ascending. `id` is always a plain
+JSON number (`1`, `2`, `3`, ...), not a string -- keep new entries
+numeric so the sort keeps working correctly.
+
+An earlier version of this page grouped gifts that shared the same price
+into a single card with a carousel to browse between them. Beta testing
+found the carousel unintuitive, so it was replaced with the simpler
+one-card-per-gift structure here. That carousel UI/logic is preserved on
+a separate git branch rather than deleted outright, in case it's useful
+again later.
 
 ## Replacing placeholder assets
 

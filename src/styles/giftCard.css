@@ -1,0 +1,149 @@
+.gift-card {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-3);
+  background: var(--color-bg-raised);
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  padding: var(--space-3);
+  width: 100%;
+}
+
+/* Square image box, the photo cropped to fill it completely
+   (object-fit: cover) rather than letterboxed -- unlike the Home
+   page hero, where the full photo must always be visible, here we
+   deliberately crop, since this is a small square product preview
+   where filling the box matters more than seeing 100% of the
+   original framing. */
+.gift-card__image-box {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--color-bg-raised);
+  border: 1px solid var(--color-line);
+}
+
+.gift-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Diagonal ribbon-style stamp over the image when the gift is
+   claimed. A solid background band (not just text with a shadow)
+   keeps the label legible regardless of the underlying photo's
+   colors/contrast, since this needs to read clearly as a status
+   indicator, not blend with the image. */
+.gift-card__claimed-watermark {
+  position: absolute;
+  top: 14px;
+  left: -28px;
+  width: 140px;
+  transform: rotate(-35deg);
+  background: var(--color-brass);
+  color: var(--color-bg);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.15rem 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* The bordered box that fills all remaining width next to the image.
+   Its own border/background give the name+price a clearly defined
+   area, distinct from the card's outer border -- this also
+   guarantees the text can never visually overlap the image, since
+   the box starts exactly where the image ends (plus the card's
+   gap), regardless of viewport width or zoom.
+
+   Styled to read as a button -- a drop shadow plus a slight upward
+   offset gives it a raised, "tappable" look, which matters
+   especially on mobile where there's no hover state to otherwise
+   hint that it's interactive. transform/box-shadow (not
+   border/padding changes) are used for the lift so nothing else in
+   the layout shifts when the box is pressed. */
+.gift-card__info-box {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  padding: var(--space-2);
+  cursor: pointer;
+  box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.03) inset;
+  transform: translateY(-1px);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.gift-card__info-box:hover {
+  background: var(--color-bg-raised);
+  box-shadow: 0 6px 14px -2px rgba(0, 0, 0, 0.55), 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  transform: translateY(-2px);
+}
+
+/* Pressed/active feedback -- the box "sinks" back down on tap/click,
+   the standard tactile cue for a button, and the one piece of
+   feedback touch devices actually get (they skip :hover entirely). */
+.gift-card__info-box:active {
+  box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.5);
+  transform: translateY(0);
+}
+
+/* Dimmed when the gift is claimed, with no click or hover behavior
+   at all (see GiftCard.jsx -- onClick/onKeyDown/role/tabIndex/tooltip
+   are all omitted entirely for a claimed gift, not just visually
+   suppressed), since there's nothing to open a payment modal for.
+   The elevated/button look is removed too -- flat and grounded,
+   so it doesn't visually promise an interaction it can't deliver. */
+.gift-card__info-box--claimed {
+  opacity: 0.45;
+  cursor: default;
+  box-shadow: none;
+  transform: none;
+}
+
+.gift-card__info-box--claimed:hover {
+  background: var(--color-bg);
+  box-shadow: none;
+  transform: none;
+}
+
+/* Centered within the info box (both axes), with the name and price
+   stacked directly on top of each other as a single unit. */
+.gift-card__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  text-align: center;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.gift-card__name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--color-ink);
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  line-height: 1.3;
+}
+
+.gift-card__price {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-brass);
+  font-weight: 600;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+}
