@@ -21,16 +21,20 @@ function formatPriceBRL(price) {
 /**
  * Modal shown when a (non-claimed) gift's info box is clicked. Shows a
  * QR code (generated lazily -- only once this modal actually opens, not
- * for every gift on page load, see useQrCode), the gift name, and price.
+ * for every gift on page load, see useQrCode), a short static subtitle
+ * ("Clique para copiar"), the gift name, and price.
  *
  * The QR code itself doubles as a copy-to-clipboard button for the Pix
  * payload string, since scanning isn't always convenient (e.g. testing
  * on the same device) and the underlying string is exactly what a Pix
- * app needs if pasted into a manual "pay with Pix code" flow.
+ * app needs if pasted into a manual "pay with Pix code" flow. The hover
+ * tooltip alone wouldn't convey this on a touch device (nothing to
+ * hover), so the subtitle is a persistent, always-visible hint instead.
  */
 export default function GiftModal({ gift, onClose }) {
   const qrHoverText = useText("qr_code_hover");
   const qrCopiedText = useText("qr_code_copied");
+  const qrSubtitle = useText("qr_code_subtitle");
   const [justCopied, setJustCopied] = useState(false);
 
   const { dataUrl, isLoading, error } = useQrCode(gift.pixPayload, true);
@@ -102,6 +106,8 @@ export default function GiftModal({ gift, onClose }) {
             )}
           </button>
         </Tooltip>
+
+        <p className="gift-modal__subtitle">{qrSubtitle}</p>
 
         <h3 className="gift-modal__name">{gift.name}</h3>
         <p className="gift-modal__price">{formatPriceBRL(gift.price)}</p>

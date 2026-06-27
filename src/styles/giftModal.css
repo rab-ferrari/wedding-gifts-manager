@@ -91,13 +91,25 @@
   color: #d98b8b;
 }
 
+/* Persistent (not hover-only) hint shown below the QR code, mainly for
+   touch devices where a hover tooltip is never discoverable -- the
+   "Copiar código PIX" tooltip still appears on devices that do support
+   hover, but this text is always visible regardless. */
+.gift-modal__subtitle {
+  margin: calc(var(--space-1) - var(--space-2)) 0 0 0;
+  font-family: var(--font-body);
+  color: var(--color-ink-soft);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
 /* Same formatting as the Gifts page card (.price-tier-card__name /
    __price in priceTierCard.css) -- duplicated here rather than
    sharing the class directly, since the modal and the card are
    visually similar by requirement but structurally separate
    components that may diverge later. */
 .gift-modal__name {
-  margin: var(--space-2) 0 0 0;
+  margin: var(--space-1) 0 0 0;
   font-family: var(--font-display);
   font-weight: 500;
   color: var(--color-ink);
