@@ -1,0 +1,31 @@
+/* Unlike Home/About (fixed height: 100%, no scroll), the Gifts page is
+   a normal block -- main (a plain block, see Layout.jsx) scrolls on
+   its own once this page's content (the gift list) is taller than the
+   available space. */
+.gifts-page {
+  padding: var(--space-4) var(--space-3) var(--space-5);
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+}
+
+.gifts-page__title {
+  margin: 0 0 var(--space-3) 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  color: var(--color-ink);
+  text-align: center;
+}
+
+.gifts-page__empty {
+  text-align: center;
+  color: var(--color-ink-soft);
+  font-family: var(--font-body);
+}
+
+.gifts-page__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}

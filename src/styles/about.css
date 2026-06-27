@@ -1,0 +1,56 @@
+/* main (in Layout.jsx) is a plain block, not a flex container, so
+   .about-page sizes itself via height: 100% (filling all of main's
+   available space), matching the Home page's approach -- a fixed,
+   non-scrolling single screen, unlike the Gifts page which will
+   scroll once its content (the gift list) is added. */
+.about-page {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3);
+  overflow: hidden;
+}
+
+/* Groups both boxes, stacked one on top of the other, centered
+   together as a unit. */
+.about-page__boxes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 480px;
+}
+
+.about-box {
+  width: 100%;
+  background: var(--color-bg-raised);
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  padding: var(--space-4) var(--space-3);
+  text-align: center;
+}
+
+.about-box__title {
+  margin: 0 0 var(--space-2) 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-brass);
+  /* clamp() ties size to viewport width (vw), the same responsive
+     pattern used for the Home page title -- it scales with window
+     size/aspect ratio, not with browser zoom (zoom scales the final
+     rendered result uniformly regardless of the units used here;
+     verified separately). */
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+}
+
+.about-box__text {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-ink-soft);
+  line-height: 1.6;
+  font-size: clamp(0.85rem, 1.6vw, 1rem);
+}

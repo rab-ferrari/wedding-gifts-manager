@@ -1,0 +1,21 @@
+{
+  "home_title": "Laís & Rodrigo",
+  "home_date": "02/08/2026 11:30",
+
+  "nav_home": "Início",
+  "nav_gifts": "Presentes",
+  "nav_about": "Sobre",
+
+  "gifts_title": "Lista de Presentes",
+  "gifts_claimed_label": "Reservado",
+  "gifts_hover": "Dar presente",
+  "qr_code_hover": "Copiar código PIX",
+  "qr_code_copied": "Código copiado",
+
+  "about_title": "About",
+  "about_body": "About app here.\nGive gifts pls.",
+
+  "privacy_title": "Privacy",
+  "privacy_body": "Pls accept cookies =)\nAté mais, e obrigado pelos peixes!"
+
+}

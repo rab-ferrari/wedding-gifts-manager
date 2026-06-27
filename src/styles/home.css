@@ -1,0 +1,130 @@
+/* main (in Layout.jsx) is a plain block, not a flex container, so
+   .home-page sizes itself via height: 100% (filling all of main's
+   available space) rather than flex: 1. */
+.home-page {
+  height: 100%;
+}
+
+/* ------------------------------------------------------------
+   Hero: full-width/full-height container, filling the entire
+   .home-page (the space between the top NavBar and bottom
+   LinkBar, both rendered by Layout, outside this component). Its
+   own background is the theme color -- it does NOT hold the image
+   directly, so on wide viewports the theme color shows on either
+   side of the photo instead of the photo stretching edge-to-edge.
+   ------------------------------------------------------------ */
+.home-page__hero {
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--color-bg);
+  overflow: hidden;
+}
+
+/* The image's container: stretches to the hero's full height (via
+   the parent's align-items: stretch -- no explicit height here,
+   see note in the previous commit) and the hero's full width. This
+   panel itself doesn't determine the image's box -- the <img>
+   inside does, via object-fit: contain (see .home-page__image
+   below), so the photo is never cropped regardless of how the
+   panel's own aspect ratio changes across window sizes/zoom
+   levels: it simply scales up to fill whichever dimension (width
+   or height) it reaches first. */
+.home-page__image-panel {
+  position: relative;
+  width: 100%;
+  flex-shrink: 0;
+  background-color: var(--color-bg-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* width/height: 100% gives the <img> an explicit box matching the
+   panel exactly; object-fit: contain then scales the image's
+   actual rendered content to fit within that box, preserving
+   aspect ratio, shrinking OR enlarging as needed -- this matters
+   because a width/height:auto + max-width/max-height:100% approach
+   only ever shrinks to fit ("auto" sizing for a replaced element
+   never upscales past its native pixel resolution), which left a
+   gap below the image on tall/zoomed-out viewports where the
+   available height exceeds the image's native pixel height
+   (verified at simulated zoom levels down to 10%). object-fit on
+   an explicitly-sized box has no such ceiling -- it fits the box
+   in both directions. */
+.home-page__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Gradient scrim behind the title/date so they stay legible
+   regardless of what's behind them in the photo, without fully
+   obscuring the picture */
+.home-page__scrim-top {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 38%;
+  background: linear-gradient(to bottom, rgba(15, 12, 10, 0.65), transparent);
+  pointer-events: none;
+}
+
+.home-page__overlay-text {
+  position: absolute;
+  z-index: 1;
+  top: 14%;
+  left: 0;
+  right: 0;
+  padding: 0 var(--space-3);
+  text-align: center;
+}
+
+.home-page__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Scales down by viewport width to help stay on one line; combined
+     with the nowrap/ellipsis above, an extremely long name truncates
+     gracefully rather than wrapping or overflowing the page. */
+  font-size: clamp(1.6rem, 6vw, 3.2rem);
+  /* Layered shadow: a tight, near-opaque contact shadow keeps the
+     glyph edges readable even over light/busy parts of the photo,
+     while the wider soft layers add depth so it doesn't look like
+     a flat sticker. Designed to hold up over ANY image content,
+     not just darker areas. */
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.9),
+    0 2px 4px rgba(0, 0, 0, 0.85),
+    0 4px 14px rgba(0, 0, 0, 0.75),
+    0 8px 28px rgba(0, 0, 0, 0.6);
+}
+
+.home-page__date {
+  margin: 0.4rem 0 0 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-ink);
+  font-size: clamp(0.95rem, 2.6vw, 1.25rem);
+  /* Same shadow treatment as the title (scaled down), so both sit
+     on the same visual footing over the photo. */
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.9),
+    0 1px 3px rgba(0, 0, 0, 0.85),
+    0 3px 10px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 480px) {
+  .home-page__overlay-text {
+    top: 10%;
+  }
+}

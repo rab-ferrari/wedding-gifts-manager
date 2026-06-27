@@ -1,0 +1,59 @@
+/* Always a real box (not display: contents) and always position:
+   relative -- the tooltip bubble is an absolutely-positioned CHILD
+   of this wrapper, so the wrapper itself must be a positioned
+   ancestor for the bubble to anchor to it correctly. (A previous
+   attempt removed this element from the box model via display:
+   contents to avoid imposing sizing on whatever it wraps, but that
+   also broke the bubble's positioning, since position:absolute
+   needs a real ancestor box, not a sibling, to anchor to -- verified
+   via the bubble's actual offsetParent resolving to <body> instead.)
+   display: inline-flex here is intentionally minimal/content-sized;
+   contexts that need the wrapper to fill available space (like the
+   info box inside the Gifts page's flex row) use the
+   --fill-parent modifier below instead of fighting this default. */
+.tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+/* Used where Tooltip wraps an element that must fill its OWN
+   parent's remaining flex space (e.g. .price-tier-card__info-box
+   inside .price-tier-card's flex row) -- without this, the default
+   inline-flex sizing shrinks the wrapper to its content's width,
+   which in turn gives its child a shrunk-to-fit container instead
+   of the actual flex row to grow into via flex: 1 (this is exactly
+   the bug report this fix addresses: info boxes appeared sized to
+   their text instead of filling the card). */
+.tooltip-wrapper--fill-parent {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+}
+
+.tooltip-bubble {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-bg-raised);
+  color: var(--color-ink);
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 30;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.tooltip-bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--color-line);
+}

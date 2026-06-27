@@ -1,0 +1,113 @@
+/* ============================================================
+   Design tokens
+   Palette: warm near-black ground (not pure black), aged-brass
+   accent, soft ivory text — evokes letterpress wedding
+   stationery rather than a generic "dark mode app".
+   ============================================================ */
+:root {
+  --color-bg: #1b1714;          /* warm near-black, the page ground */
+  --color-bg-raised: #241f1b;   /* nav bar / cards, one step up */
+  --color-ink: #f3ecdf;         /* warm ivory, primary text */
+  --color-ink-soft: #c9bfae;    /* secondary text */
+  --color-brass: #c9a35d;       /* aged-brass accent */
+  --color-brass-soft: rgba(201, 163, 93, 0.35);
+  --color-line: rgba(243, 236, 223, 0.12);
+  --color-overlay: rgba(15, 12, 10, 0.55);
+
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Georgia", serif;
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  --nav-height: 72px;
+  --page-max-width: 1100px;
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Respect reduced-motion preferences site-wide */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible keyboard focus, themed to match the palette rather than
+   the browser default blue outline */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-brass);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ------------------------------------------------------------
+   Inline SVG icon sizing
+   ------------------------------------------------------------
+   Icon.jsx injects raw SVG markup into the DOM (via
+   dangerouslySetInnerHTML) so icons can be themed with
+   currentColor -- see useInlineSvg.js for why. The downside: an
+   injected <svg> with no (or inconsistent) width/height attributes
+   has no intrinsic size, and browsers can render it at a default
+   size or let it grow to fill its container. Different export
+   tools (Figma, Illustrator, hand-written) produce different
+   combinations of width/height/viewBox, so rather than requiring
+   every icon file to be authored a specific way, we force sizing
+   here: every Icon instance carries the stable ".icon" base class
+   (see Icon.jsx), and the svg inside it always fills that box
+   exactly and never overflows it, regardless of the source file's
+   own attributes. The wrapper's own size (set per-usage, e.g.
+   .nav-bar__icon) is what actually controls how big the icon
+   appears. */
+.icon {
+  overflow: hidden;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

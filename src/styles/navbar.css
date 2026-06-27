@@ -1,0 +1,92 @@
+.nav-bar {
+  height: var(--nav-height);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-raised);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.nav-bar__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.nav-bar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--color-ink-soft);
+  padding: 0.25rem 0.5rem;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-bar__item:hover {
+  color: var(--color-ink);
+}
+
+.nav-bar__item.is-active {
+  color: var(--color-brass);
+}
+
+.nav-bar__icon {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.nav-bar__label {
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-family: var(--font-body);
+}
+
+.nav-bar__item.is-active::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-brass);
+  transform: translateX(-50%);
+}
+
+@media (max-width: 480px) {
+  .nav-bar__inner {
+    gap: var(--space-4);
+  }
+}
+
+/* ------------------------------------------------------------
+   Bottom link bar
+   ------------------------------------------------------------
+   Visually matches the top .nav-bar (same height, background,
+   border, icon size, and inter-item spacing) but holds external
+   links (maps/whatsapp/github) instead of in-app page routes --
+   so items are icon-only, with no text label and no "active route"
+   state, since neither concept applies to an external link. */
+.nav-bar--bottom {
+  border-bottom: none;
+  border-top: 1px solid var(--color-line);
+}
+
+.nav-bar__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-ink-soft);
+  padding: 0.25rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-bar__link:hover {
+  color: var(--color-brass);
+  transform: translateY(-2px);
+}
