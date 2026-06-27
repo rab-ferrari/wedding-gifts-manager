@@ -1,0 +1,5 @@
+{
+  "pix_key": "renomear arquivo para apenas 'config.json' e incluir detalhes nesse arquivo. Quaisquer chave pix (cpf, celular, email) funcionam, mas recomendo criar e usar uma chave aleatoria",
+  "merchant_name": "Nome sera apenas encodado no payload pix, apos escanear e tentar a transferencia pelos apps bancarios, seus dados reais aparecerao de qualquer jeito",
+  "merchant_city": "Idem comportamento do nome, esse campo eh apenas encodado no payload pix"
+}
