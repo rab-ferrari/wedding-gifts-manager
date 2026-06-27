@@ -201,8 +201,8 @@ An earlier version of this page grouped gifts that shared the same price
 into a single card with a carousel to browse between them. Beta testing
 found the carousel unintuitive, so it was replaced with the simpler
 one-card-per-gift structure here. That carousel UI/logic is preserved on
-a separate git branch rather than deleted outright, in case it's useful
-again later.
+a separate git branch "gift-tier-carousel" rather than deleted outright,
+in case it's useful again later.
 
 ## Replacing placeholder assets
 

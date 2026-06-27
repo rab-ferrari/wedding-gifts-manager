@@ -17,13 +17,13 @@
 }
 
 /* Used where Tooltip wraps an element that must fill its OWN
-   parent's remaining flex space (e.g. .price-tier-card__info-box
-   inside .price-tier-card's flex row) -- without this, the default
-   inline-flex sizing shrinks the wrapper to its content's width,
-   which in turn gives its child a shrunk-to-fit container instead
-   of the actual flex row to grow into via flex: 1 (this is exactly
-   the bug report this fix addresses: info boxes appeared sized to
-   their text instead of filling the card). */
+   parent's remaining flex space (e.g. .gift-card__info-box inside
+   .gift-card's flex row) -- without this, the default inline-flex
+   sizing shrinks the wrapper to its content's width, which in turn
+   gives its child a shrunk-to-fit container instead of the actual
+   flex row to grow into via flex: 1 (this is exactly the bug report
+   this fix addresses: info boxes appeared sized to their text
+   instead of filling the card). */
 .tooltip-wrapper--fill-parent {
   display: flex;
   flex: 1;

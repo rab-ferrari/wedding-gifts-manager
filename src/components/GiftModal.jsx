@@ -7,9 +7,9 @@ import "../styles/giftModal.css";
 
 /**
  * Formats a price as Brazilian currency (R$ 1.234,56) -- duplicated
- * from PriceTierCard rather than imported, since it's a single small
- * pure function; a shared utils/formatPrice.js would be reasonable too
- * if a third use case comes up.
+ * from GiftCard rather than imported, since it's a single small pure
+ * function; a shared utils/formatPrice.js would be reasonable too if
+ * a third use case comes up.
  */
 function formatPriceBRL(price) {
   return price.toLocaleString("pt-BR", {
