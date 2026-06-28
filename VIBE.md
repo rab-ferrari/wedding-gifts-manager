@@ -21,6 +21,14 @@ persistent bottom bar of external links (location/maps, WhatsApp, GitHub
 source). Both bars render on every page, all icons themed via inline SVG so
 they can pick up the theme's colors.
 
+The app's root container sizes itself to the actual visible mobile
+viewport, not just the desktop-equivalent full window height — on phones,
+the browser's own address bar can show or hide depending on scroll
+position, and a naive full-height layout sized against the wrong moment
+leaves the bottom bar just out of view until the user scrolls. The layout
+must hold both bars on screen from the very first paint, with no scrolling
+required to reveal the bottom bar on any device.
+
 ### Home
 
 A single, fixed-height screen (no scroll) between the two bars. A vertical
