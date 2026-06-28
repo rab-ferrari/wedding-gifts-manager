@@ -21,6 +21,11 @@
   position: relative;
   width: min(100%, 360px);
   max-height: 90vh;
+  /* Same fix as #root in theme.css: svh commits to the smaller,
+     chrome-visible viewport measurement, so this cap is correct from
+     first paint on mobile rather than measured against a taller
+     viewport than what's actually visible before the user scrolls. */
+  max-height: 90svh;
   overflow-y: auto;
   background: var(--color-bg-raised);
   border: 1px solid var(--color-line);
@@ -103,11 +108,11 @@
   text-align: center;
 }
 
-/* Same formatting as the Gifts page card (.price-tier-card__name /
-   __price in priceTierCard.css) -- duplicated here rather than
-   sharing the class directly, since the modal and the card are
-   visually similar by requirement but structurally separate
-   components that may diverge later. */
+/* Same formatting as the Gifts page card (.gift-card__name /
+   __price in giftCard.css) -- duplicated here rather than sharing
+   the class directly, since the modal and the card are visually
+   similar by requirement but structurally separate components that
+   may diverge later. */
 .gift-modal__name {
   margin: var(--space-1) 0 0 0;
   font-family: var(--font-display);
