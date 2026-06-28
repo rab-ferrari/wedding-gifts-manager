@@ -44,6 +44,30 @@ body {
 
 #root {
   height: 100vh;
+  /* 100vh freezes at the viewport size measured when the page first
+     loads, which on mobile includes the browser's address bar/UI
+     chrome. That UI collapses as soon as the user scrolls, making
+     the REAL visible area taller than the frozen 100vh value -- so
+     the page initially renders too short, and the bottom bar only
+     comes into view after scrolling (by which point the address bar
+     has already hidden itself, which is the exact symptom reported:
+     scrolling reveals the bottom bar, but only once the URL bar has
+     already disappeared).
+
+     100svh ("small viewport height") instead commits to the SMALLER
+     size -- the one measured with the browser's UI chrome still
+     visible -- from the very first paint, and never changes. This is
+     the right choice here specifically because #root has overflow:
+     hidden and isn't meant to resize at all once rendered; the
+     alternative, 100dvh ("dynamic viewport height"), would also fix
+     the bug but by continuously resizing the layout as the address
+     bar animates away mid-scroll, which is unnecessary movement for
+     a layout that should just be correct from the start. Kept as a
+     separate, later rule (not merged into one height declaration) so
+     a browser that doesn't recognize `svh` simply ignores this line
+     and keeps the 100vh fallback above, rather than the whole
+     declaration failing. */
+  height: 100svh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
