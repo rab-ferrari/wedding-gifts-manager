@@ -1,93 +1,139 @@
 [
   {
-    "name": "Coffee Machine",
-    "price": 300.00,
-    "image": "assets/gifts/coffee_machine.png",
-    "claimed": true
-  },
-  {
-    "name": "Cadeira",
-    "price": 300.00,
-    "image": "assets/gifts/chair.png",
+    "name": "Utensilios Domésticos",
+    "price": 100.00,
+    "image": "assets/gifts/0100-utensilios.jpeg",
     "claimed": false
   },
   {
-    "name": "Taxa do cartório que a Helo prometeu",
-    "price": 605.30,
-    "image": "assets/gifts/cartorio.png",
+    "name": "Potes Herméticos",
+    "price": 110.00,
+    "image": "assets/gifts/0110-potes.jpeg",
     "claimed": false
   },
   {
-    "name": "Fogão",
-    "price": 400.00,
-    "image": "assets/gifts/bed.png",
-    "claimed": false
-  },
-  {
-    "name": "Fogão",
-    "price": 400.00,
-    "image": "assets/gifts/bed.png",
-    "claimed": false
-  },
-  {
-    "name": "Me da um real",
-    "price": 1.00,
-    "image": "assets/gifts/one_real.png",
-    "claimed": false
-  },
-  {
-    "name": "Me da outro real",
-    "price": 1.00,
-    "image": "assets/gifts/one_real.png",
-    "claimed": false
-  },
-
-  {
-    "name": "Cafeteira",
-    "price": 250,
-    "image": "assets/gifts/cafeteira.png",
-    "claimed": false
-  },
-  {
-    "name": "Jogo de Toalhas",
-    "price": 99.9,
-    "image": "assets/gifts/toalhas.png",
-    "claimed": false
-  },
-  {
-    "name": "Lua de Mel - Diária",
-    "price": 500,
-    "image": "assets/gifts/luademel.png",
-    "claimed": false
-  },
-  {
-    "name": "Jogo de Panelas",
-    "price": 250,
-    "image": "assets/gifts/panelas.png",
+    "name": "Kit formas para Bolo",
+    "price": 120.00,
+    "image": "assets/gifts/0120-formas.jpeg",
     "claimed": false
   },
   {
     "name": "Liquidificador",
-    "price": 250,
-    "image": "assets/gifts/liquidificador.png",
+    "price": 130.00,
+    "image": "assets/gifts/0130-liquidificador.jpeg",
+    "claimed": false
+  },
+  {
+    "name": "Jogo de Chícaras",
+    "price": 140.00,
+    "image": "assets/gifts/0140-chicaras.jpeg",
+    "claimed": false
+  },
+  {
+    "name": "Jogo de Copos e Jarra",
+    "price": 150.00,
+    "image": "assets/gifts/0150-copos.jpeg",
     "claimed": false
   },
   {
     "name": "Aspirador de Pó",
-    "price": 99.9,
-    "image": "assets/gifts/aspirador.png",
-    "claimed": true
+    "price": 170.00,
+    "image": "assets/gifts/0170-aspirador.jpeg",
+    "claimed": false
   },
   {
-    "name": "Jogo de Facas",
-    "price": 250,
-    "image": "assets/gifts/cafeteira.png",
+    "name": "Jogo de Toalhas",
+    "price": 200.00,
+    "image": "assets/gifts/0200-toalhas.jpeg",
+    "claimed": false
+  },
+  {
+    "name": "Jogo de Lencóis",
+    "price": 300.00,
+    "image": "assets/gifts/0300-lencol.jpg",
+    "claimed": false
+  },
+  {
+    "name": "Batedeira",
+    "price": 400.00,
+    "image": "assets/gifts/0400-batedeira.jpg",
+    "claimed": false
+  },
+  {
+    "name": "Panela de Pressão Elétrica",
+    "price": 500.00,
+    "image": "assets/gifts/0500-panela.jpeg",
+    "claimed": false
+  },
+  {
+    "name": "1 Cadeira",
+    "price": 600.00,
+    "image": "assets/gifts/0600-cadeira.jpeg",
+    "claimed": false
+  },
+  {
+    "name": "Faqueiro",
+    "price": 700.00,
+    "image": "assets/gifts/0700-faqueiro.jpg",
+    "claimed": false
+  },
+  {
+    "name": "Jogo de Panelas",
+    "price": 800.00,
+    "image": "assets/gifts/0800-panelas.jpg",
     "claimed": false
   },
   {
     "name": "Air Fryer",
-    "price": 250,
-    "image": "assets/gifts/panelas.png",
+    "price": 900.00,
+    "image": "assets/gifts/0900-airfryer.jpg",
+    "claimed": false
+  },
+  {
+    "name": "Microondas",
+    "price": 1000.00,
+    "image": "assets/gifts/1000-microondas.png",
+    "claimed": false
+  },
+  {
+    "name": "Filtro",
+    "price": 1200.00,
+    "image": "assets/gifts/1200-bebedouro.jpeg",
+    "claimed": false
+  },
+  {
+    "name": "Fogão",
+    "price": 1500.00,
+    "image": "assets/gifts/1500-fogao.png",
+    "claimed": false
+  },
+  {
+    "name": "Lavadora",
+    "price": 3000.00,
+    "image": "assets/gifts/3000-lavadora.jpeg",
+    "claimed": false
+  },
+  {
+    "name": "Secadora",
+    "price": 4000.00,
+    "image": "assets/gifts/4000-secadora.jpeg",
+    "claimed": false
+  },
+  {
+    "name": "Armários Planejados",
+    "price": 5000.00,
+    "image": "assets/gifts/5000-armarios.png",
+    "claimed": false
+  },
+  {
+    "name": "Geladeira",
+    "price": 6000.00,
+    "image": "assets/gifts/6000-geladeira.jpeg",
+    "claimed": false
+  },
+  {
+    "name": "Outro Presente",
+    "image": "assets/gifts/other.png",
     "claimed": false
   }
 ]
