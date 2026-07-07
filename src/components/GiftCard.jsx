@@ -22,13 +22,6 @@ function formatPriceBRL(price) {
  * a full photo that must stay fully visible), and a bordered info box
  * on the right with the gift's name + price, both centered within it.
  *
- * This replaces the earlier PriceTierCard/GiftCarousel design, which
- * grouped multiple gifts sharing a price into one card with a
- * carousel to browse between them. Beta testing found the carousel
- * unintuitive, so the simpler one-card-per-gift structure replaces it
- * here -- the carousel UI/logic itself is preserved on a separate
- * branch rather than deleted outright, in case it's useful again.
- *
  * The info box fills the remaining width next to the image (rather
  * than being centered across the full card), so the text always has
  * its own clearly bounded area and never visually overlaps the image,
@@ -82,7 +75,7 @@ export default function GiftCard({ gift }) {
         >
           <div className="gift-card__info">
             <h3 className="gift-card__name">{gift.name}</h3>
-            <p className="gift-card__price">{formatPriceBRL(gift.price)}</p>
+            {gift.price && (<p className="gift-card__price">{formatPriceBRL(gift.price)}</p>)}
           </div>
         </div>
       </ConditionalTooltip>

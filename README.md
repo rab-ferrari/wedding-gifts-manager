@@ -47,7 +47,17 @@ deploy somewhere else instead.
 2. Set the `"homepage"` field in `package.json` to your actual GitHub Pages
    URL, e.g. `"https://your-username.github.io/your-repo-name"`.
 3. Set the `base` path in `vite.config.js` (see below) to match your
-   repository name.
+   repository name (replace `your-repo-name`).
+```javascript
+  import { defineConfig } from 'vite'
+  import react from '@vitejs/plugin-react'
+
+  export default defineConfig(({ command }) => ({
+    plugins: [react()],
+    // root locally, repo subfolder in production
+    base: command === 'serve' ? '/' : '/your-repo-name/',
+  }))
+```
 4. Re-create `scripts/config.json` locally with your real Pix details
    following the template file `scripts/config.template.json`
    (see "Pix payload preprocessing" below) — it's gitignored and won't
@@ -63,48 +73,6 @@ This runs the Python preprocessing script, builds the production bundle
 into `dist/`, and pushes it to the repository's `gh-pages` branch via the
 `gh-pages` package.
 
-### Why these specific changes were needed
-
-GitHub Pages serves project sites from a subpath
-(`username.github.io/repo-name/`), not the domain root, and has no
-server-side rewrite rules — both of which standard Vite/React defaults
-assume away. Three changes address this:
-
-- **`base` in `vite.config.js`** — Vite needs to know what subpath the
-  built assets will be served from so it can generate correct asset
-  URLs. Since the local dev server *does* run at the root, `vite.config.js`
-  picks the right base path depending on context (`serve` = local dev,
-  `build` = production):
-```javascript
-  import { defineConfig } from 'vite'
-  import react from '@vitejs/plugin-react'
-
-  export default defineConfig(({ command }) => ({
-    plugins: [react()],
-    // root locally, repo subfolder in production
-    base: command === 'serve' ? '/' : '/your-repo-name/',
-  }))
-```
-  Replace `your-repo-name` with your actual repository name.
-
-- **`HashRouter` instead of `BrowserRouter`** — `BrowserRouter` relies on
-  the server recognizing every app route (e.g. `/gifts`) and always
-  returning `index.html` so React Router can take over client-side.
-  GitHub Pages has no such rewrite rule, so refreshing or bookmarking
-  any route but the root 404s. `HashRouter` keeps all routing after a
-  `#` (e.g. `/#/gifts`), which the browser never sends to the server at
-  all, so this can't happen. The tradeoff is a `#` in every URL — a
-  non-issue for a site mostly reached via a single shared link.
-
-- **Relative asset paths** — with a `base` path in play, an absolute
-  path like `/assets/icons/home.svg` resolves against the domain root
-  and skips the repo subfolder entirely, breaking on GitHub Pages even
-  though it works locally (where the root and the subpath happen to be
-  the same thing). Every asset reference in the source code and in
-  `gifts.json` uses a relative path instead (`assets/icons/home.svg`,
-  no leading slash), so it resolves correctly relative to wherever the
-  page is actually served from.
-
 ## Project structure
 
 ```
@@ -117,9 +85,6 @@ public/assets/
   icons/                 SVG icons (home, gift, about, maps, whatsapp, github)
   images/                Page images (currently: home_background_center.png)
   gifts/                 Per-gift photos (referenced by gifts.json -> image)
-  qrcodes/               Unused -- QR codes are generated client-side from
-                          each gift's pixPayload string (see GiftModal.jsx /
-                          useQrCode.js), not pre-rendered as image files
 
 scripts/
   generate_pix_payloads.py   Run automatically by `npm run dev` / `npm run
@@ -190,10 +155,9 @@ src/
 
 ## Gift data
 
-Each gift in `gifts.json` gets its own card on the Gifts page -- no
-grouping by price or anywhere else. Add/edit gifts freely in
-`gifts_source.json` (see "Pix payload preprocessing" below); each entry
-maps directly to one `GiftCard`.
+Each gift in `gifts.json` gets its own card on the Gifts page. Add/edit
+gifts freely in `gifts_source.json` (see "Pix payload preprocessing" below);
+each entry maps directly to one `GiftCard`.
 
 Cards are displayed sorted by `id`, ascending. `id` is always a plain
 JSON number (`1`, `2`, `3`, ...), not a string -- keep new entries

@@ -185,17 +185,31 @@ def generate_pix_payload(
     if not clean_city:
         raise PixPayloadError(f"merchant_city resolved to empty string after sanitization: {merchant_city!r}")
 
-    body = (
-        tlv(ID_PAYLOAD_FORMAT_INDICATOR, "01")
-        + build_merchant_account_info(pix_key.strip(), description)
-        + tlv(ID_MERCHANT_CATEGORY_CODE, "0000")
-        + tlv(ID_TRANSACTION_CURRENCY, CURRENCY_BRL)
-        + tlv(ID_TRANSACTION_AMOUNT, format_amount(amount))
-        + tlv(ID_COUNTRY_CODE, COUNTRY_BR)
-        + tlv(ID_MERCHANT_NAME, clean_name)
-        + tlv(ID_MERCHANT_CITY, clean_city)
-        + build_additional_data_field(txid)
-    )
+    # omit the amount field if zero, user will be able to input any value on its bank app when reading the qr code
+    if amount == 0.00:
+        body = (
+            tlv(ID_PAYLOAD_FORMAT_INDICATOR, "01")
+            + build_merchant_account_info(pix_key.strip(), description)
+            + tlv(ID_MERCHANT_CATEGORY_CODE, "0000")
+            + tlv(ID_TRANSACTION_CURRENCY, CURRENCY_BRL)
+            + tlv(ID_COUNTRY_CODE, COUNTRY_BR)
+            + tlv(ID_MERCHANT_NAME, clean_name)
+            + tlv(ID_MERCHANT_CITY, clean_city)
+            + build_additional_data_field(txid)
+        )
+
+    else:
+        body = (
+            tlv(ID_PAYLOAD_FORMAT_INDICATOR, "01")
+            + build_merchant_account_info(pix_key.strip(), description)
+            + tlv(ID_MERCHANT_CATEGORY_CODE, "0000")
+            + tlv(ID_TRANSACTION_CURRENCY, CURRENCY_BRL)
+            + tlv(ID_TRANSACTION_AMOUNT, format_amount(amount))
+            + tlv(ID_COUNTRY_CODE, COUNTRY_BR)
+            + tlv(ID_MERCHANT_NAME, clean_name)
+            + tlv(ID_MERCHANT_CITY, clean_city)
+            + build_additional_data_field(txid)
+        )
 
     # The CRC is computed over the payload including the "6304" tag+length
     # prefix of the CRC field itself, but not its value.
@@ -225,7 +239,8 @@ def validate_config(config: dict) -> dict:
 
 def process_gift(gift: dict, config: dict, index: int) -> dict:
     if "price" not in gift:
-        raise PixPayloadError(f"Gift entry #{index} is missing required field 'price'")
+        f"Price undefined, will be removed from pix payload (setting as zero)"
+        gift["price"] = 0.00
 
     try:
         price = float(gift["price"])
@@ -245,7 +260,7 @@ def process_gift(gift: dict, config: dict, index: int) -> dict:
     )
 
     enriched = {"id": index, **dict(gift)}
-    enriched["price"] = price
+    if price == 0.00: del enriched["price"]
     enriched["pixPayload"] = payload
     return enriched
 

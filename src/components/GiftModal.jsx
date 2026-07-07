@@ -110,7 +110,7 @@ export default function GiftModal({ gift, onClose }) {
         <p className="gift-modal__subtitle">{qrSubtitle}</p>
 
         <h3 className="gift-modal__name">{gift.name}</h3>
-        <p className="gift-modal__price">{formatPriceBRL(gift.price)}</p>
+        {gift.price && (<p className="gift-modal__price">{formatPriceBRL(gift.price)}</p>)}
       </div>
     </div>
   );

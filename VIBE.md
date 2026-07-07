@@ -50,8 +50,7 @@ file as everything else on the site.
 ### Gifts
 
 The only scrollable page. A vertically stacked list of gift cards, one card
-per gift (sorted by the gift's numeric `id`, ascending — never grouped or
-combined). Each card:
+per gift (sorted by the gift's numeric `id`, ascending). Each card:
 
 - A square product-style image on the left, cropped to fill the square
   (cover, not letterboxed — unlike the Home page photo, filling the box
@@ -110,7 +109,8 @@ in components — editable without touching code:
 - `gifts_source.json` — the editable gift list: numeric `id`, `name`,
   `price`, `image` path, `claimed` boolean. No payment data.
 - `gifts.json` — generated automatically from `gifts_source.json`; adds a
-  ready-to-use Pix payload string to each gift. Never hand-edited.
+  ready-to-use Pix payload string to each gift. Never hand-edited. Price
+  can be non-existent, then it must not be shown on any interfaces.
 - `icons/`, `images/`, `gifts/` — SVG icons, page images, and per-gift
   photos respectively, all referenced by relative path (not absolute) so
   the app works correctly when hosted from a non-root subpath.

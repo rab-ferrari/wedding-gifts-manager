@@ -1,114 +1,185 @@
 [
   {
     "id": 0,
-    "name": "Coffee Machine",
-    "price": 300.0,
-    "image": "assets/gifts/coffee_machine.png",
-    "claimed": true,
-    "pixPayload": "00020126760014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040214Coffee Machine5204000053039865406300.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***63049038"
+    "name": "Utensilios Domésticos",
+    "price": 100.0,
+    "image": "assets/gifts/0100-utensilios.jpeg",
+    "claimed": false,
+    "pixPayload": "00020126830014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040221Utensilios Domesticos5204000053039865406100.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***63046BD3"
   },
   {
     "id": 1,
-    "name": "Chair",
-    "price": 300.0,
-    "image": "assets/gifts/chair.png",
+    "name": "Potes Herméticos",
+    "price": 110.0,
+    "image": "assets/gifts/0110-potes.jpeg",
     "claimed": false,
-    "pixPayload": "00020126670014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040205Chair5204000053039865406300.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***63049354"
+    "pixPayload": "00020126780014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040216Potes Hermeticos5204000053039865406110.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304BF52"
   },
   {
     "id": 2,
-    "name": "Bed",
-    "price": 400.0,
-    "image": "assets/gifts/bed.png",
+    "name": "Kit formas para Bolo",
+    "price": 120.0,
+    "image": "assets/gifts/0120-formas.jpeg",
     "claimed": false,
-    "pixPayload": "00020126650014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040203Bed5204000053039865406400.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***630420CA"
+    "pixPayload": "00020126820014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040220Kit formas para Bolo5204000053039865406120.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304DFF6"
   },
   {
     "id": 3,
-    "name": "Fogao",
-    "price": 400.0,
-    "image": "assets/gifts/bed.png",
+    "name": "Liquidificador",
+    "price": 130.0,
+    "image": "assets/gifts/0130-liquidificador.jpeg",
     "claimed": false,
-    "pixPayload": "00020126670014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040205Fogao5204000053039865406400.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***63048C19"
+    "pixPayload": "00020126760014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040214Liquidificador5204000053039865406130.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304C7D6"
   },
   {
     "id": 4,
-    "name": "Me da um real",
-    "price": 1.0,
-    "image": "assets/gifts/one_real.png",
+    "name": "Jogo de Chícaras",
+    "price": 140.0,
+    "image": "assets/gifts/0140-chicaras.jpeg",
     "claimed": false,
-    "pixPayload": "00020126750014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040213Me da um real52040000530398654041.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***63042388"
+    "pixPayload": "00020126780014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040216Jogo de Chicaras5204000053039865406140.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***630462C1"
   },
   {
     "id": 5,
-    "name": "Me da outro real",
-    "price": 1.0,
-    "image": "assets/gifts/one_real.png",
+    "name": "Jogo de Copos e Jarra",
+    "price": 150.0,
+    "image": "assets/gifts/0150-copos.jpeg",
     "claimed": false,
-    "pixPayload": "00020126780014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040216Me da outro real52040000530398654041.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***630429A5"
+    "pixPayload": "00020126830014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040221Jogo de Copos e Jarra5204000053039865406150.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***63045170"
   },
   {
     "id": 6,
-    "name": "Cafeteira",
-    "price": 250.0,
-    "image": "assets/gifts/cafeteira.png",
+    "name": "Aspirador de Pó",
+    "price": 170.0,
+    "image": "assets/gifts/0170-aspirador.jpeg",
     "claimed": false,
-    "pixPayload": "00020126710014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040209Cafeteira5204000053039865406250.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***63044018"
+    "pixPayload": "00020126770014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040215Aspirador de Po5204000053039865406170.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304EBBC"
   },
   {
     "id": 7,
     "name": "Jogo de Toalhas",
-    "price": 99.9,
-    "image": "assets/gifts/toalhas.png",
+    "price": 200.0,
+    "image": "assets/gifts/0200-toalhas.jpeg",
     "claimed": false,
-    "pixPayload": "00020126770014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040215Jogo de Toalhas520400005303986540599.905802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304DC34"
+    "pixPayload": "00020126770014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040215Jogo de Toalhas5204000053039865406200.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304F4AA"
   },
   {
     "id": 8,
-    "name": "Lua de Mel - Diária",
-    "price": 500.0,
-    "image": "assets/gifts/luademel.png",
+    "name": "Jogo de Lencóis",
+    "price": 300.0,
+    "image": "assets/gifts/0300-lencol.jpg",
     "claimed": false,
-    "pixPayload": "00020126810014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040219Lua de Mel - Diaria5204000053039865406500.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304E781"
+    "pixPayload": "00020126770014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040215Jogo de Lencois5204000053039865406300.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304B38F"
   },
   {
     "id": 9,
-    "name": "Jogo de Panelas",
-    "price": 250.0,
-    "image": "assets/gifts/panelas.png",
+    "name": "Batedeira",
+    "price": 400.0,
+    "image": "assets/gifts/0400-batedeira.jpg",
     "claimed": false,
-    "pixPayload": "00020126770014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040215Jogo de Panelas5204000053039865406250.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***63043EB6"
+    "pixPayload": "00020126710014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040209Batedeira5204000053039865406400.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304624B"
   },
   {
     "id": 10,
-    "name": "Liquidificador",
-    "price": 250.0,
-    "image": "assets/gifts/liquidificador.png",
+    "name": "Panela de Pressão Elétrica",
+    "price": 500.0,
+    "image": "assets/gifts/0500-panela.jpeg",
     "claimed": false,
-    "pixPayload": "00020126760014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040214Liquidificador5204000053039865406250.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304094B"
+    "pixPayload": "00020126880014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040226Panela de Pressao Eletrica5204000053039865406500.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304223C"
   },
   {
     "id": 11,
-    "name": "Aspirador de Pó",
-    "price": 99.9,
-    "image": "assets/gifts/aspirador.png",
-    "claimed": true,
-    "pixPayload": "00020126770014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040215Aspirador de Po520400005303986540599.905802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***630403BF"
+    "name": "1 Cadeira",
+    "price": 600.0,
+    "image": "assets/gifts/0600-cadeira.jpeg",
+    "claimed": false,
+    "pixPayload": "00020126710014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe0402091 Cadeira5204000053039865406600.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304F4FA"
   },
   {
     "id": 12,
-    "name": "Jogo de Facas",
-    "price": 250.0,
-    "image": "assets/gifts/cafeteira.png",
+    "name": "Faqueiro",
+    "price": 700.0,
+    "image": "assets/gifts/0700-faqueiro.jpg",
     "claimed": false,
-    "pixPayload": "00020126750014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040213Jogo de Facas5204000053039865406250.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304727C"
+    "pixPayload": "00020126700014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040208Faqueiro5204000053039865406700.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***630442F7"
   },
   {
     "id": 13,
-    "name": "Air Fryer",
-    "price": 250.0,
-    "image": "assets/gifts/panelas.png",
+    "name": "Jogo de Panelas",
+    "price": 800.0,
+    "image": "assets/gifts/0800-panelas.jpg",
     "claimed": false,
-    "pixPayload": "00020126710014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040209Air Fryer5204000053039865406250.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***63041055"
+    "pixPayload": "00020126770014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040215Jogo de Panelas5204000053039865406800.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304B8F5"
+  },
+  {
+    "id": 14,
+    "name": "Air Fryer",
+    "price": 900.0,
+    "image": "assets/gifts/0900-airfryer.jpg",
+    "claimed": false,
+    "pixPayload": "00020126710014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040209Air Fryer5204000053039865406900.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304E3B0"
+  },
+  {
+    "id": 15,
+    "name": "Microondas",
+    "price": 1000.0,
+    "image": "assets/gifts/1000-microondas.png",
+    "claimed": false,
+    "pixPayload": "00020126720014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040210Microondas52040000530398654071000.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***630452D9"
+  },
+  {
+    "id": 16,
+    "name": "Filtro",
+    "price": 1200.0,
+    "image": "assets/gifts/1200-bebedouro.jpeg",
+    "claimed": false,
+    "pixPayload": "00020126680014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040206Filtro52040000530398654071200.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304B932"
+  },
+  {
+    "id": 17,
+    "name": "Fogão",
+    "price": 1500.0,
+    "image": "assets/gifts/1500-fogao.png",
+    "claimed": false,
+    "pixPayload": "00020126670014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040205Fogao52040000530398654071500.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304E50C"
+  },
+  {
+    "id": 18,
+    "name": "Lavadora",
+    "price": 3000.0,
+    "image": "assets/gifts/3000-lavadora.jpeg",
+    "claimed": false,
+    "pixPayload": "00020126700014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040208Lavadora52040000530398654073000.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304B79C"
+  },
+  {
+    "id": 19,
+    "name": "Secadora",
+    "price": 4000.0,
+    "image": "assets/gifts/4000-secadora.jpeg",
+    "claimed": false,
+    "pixPayload": "00020126700014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040208Secadora52040000530398654074000.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304F0A3"
+  },
+  {
+    "id": 20,
+    "name": "Armários Planejados",
+    "price": 5000.0,
+    "image": "assets/gifts/5000-armarios.png",
+    "claimed": false,
+    "pixPayload": "00020126810014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040219Armarios Planejados52040000530398654075000.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304156B"
+  },
+  {
+    "id": 21,
+    "name": "Geladeira",
+    "price": 6000.0,
+    "image": "assets/gifts/6000-geladeira.jpeg",
+    "claimed": false,
+    "pixPayload": "00020126710014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040209Geladeira52040000530398654076000.005802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***6304F980"
+  },
+  {
+    "id": 22,
+    "name": "Outro Presente",
+    "image": "assets/gifts/other.png",
+    "claimed": false,
+    "pixPayload": "00020126760014br.gov.bcb.pix0136d715da79-a95e-4bde-84b7-7b13f74efe040214Outro Presente5204000053039865802BR5925RODRIGO ALMEIDA BERGAMO F6010SAO CARLOS62070503***630459FC"
   }
 ]
